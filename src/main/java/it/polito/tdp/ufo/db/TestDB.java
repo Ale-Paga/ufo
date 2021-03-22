@@ -1,19 +1,32 @@
 package it.polito.tdp.ufo.db;
 
-import java.sql.Connection;
+/*import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
+import java.sql.Statement;  
+import java.util.ArrayList;*/
 import java.util.List;
 
 public class TestDB {
 
 	public static void main(String[] args) {
+		
+		
+		SightingDAO dao = new SightingDAO();
+		
+		List<String> formeUFO = dao.readShapes();
+		
+		for(String forma : formeUFO) {
+			int count = dao.countByShape(forma);
+			System.out.println("Ufo di forma "+forma+" sono "+count);
+		}
+		
+		
+		
 
-		String jdbcURL="jdbc:mysql://localhost/ufo_sightings?user=root&password=10roma10";
+		/*   String jdbcURL="jdbc:mysql://localhost/ufo_sightings?user=root&password=10roma10";
 		try {
 			Connection conn = DriverManager.getConnection(jdbcURL);
 
@@ -49,8 +62,10 @@ public class TestDB {
 			String shapeScelta="circle";
 			
 			PreparedStatement st2 = conn.prepareStatement(sql2);
+			
 			st2.setString(1, shapeScelta);
 			ResultSet res2 = st2.executeQuery();
+			
 			res2.first();
 			int count = res2.getInt("cnt");
 			st2.close();
@@ -63,6 +78,8 @@ public class TestDB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		*/
 		
 		
 	}
